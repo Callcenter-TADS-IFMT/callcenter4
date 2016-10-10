@@ -1,4 +1,4 @@
-
+﻿
 <?php
 include_once('cabecalho.php');
 include './ChamadoDAO.php';
@@ -71,7 +71,7 @@ if ($novoTramite == true) {
         echo "Não está dando certo!";
     }
 
-    if ($tr->getSolucao() == true) {
+    if ($tr->getSolucao() == "true") {
         $chamadoDAO->encerraChamado($ch->getId());
     }
 }
@@ -191,7 +191,7 @@ if ($novoTramite == true) {
 
                                 <tr>
                                     <td style="width: 100px">
-                                        <input type="checkbox" name="solucao" value="true"> Solução?
+                                        <input type="checkbox" name="solucao"> Solução?
                                     </td>
                                     <td style="width: 100px">
 
@@ -201,6 +201,7 @@ if ($novoTramite == true) {
                                         <input type="hidden" name ="id_cliente" value="<?= $ch->getCliente()->getId() ?>">
                                         <input type="hidden" name ="nome_cliente" value="<?= $ch->getCliente()->getNome() ?>">
                                         <input type="hidden" name ="telefone" value="<?= $ch->getCliente()->getTelefone() ?>">
+                                        <input type="hidden" name ="status" value="<?= $ch->getStatus() ?>">
                                         <input type="hidden" name ="dt_abertura" value="<?= $ch->getDt_abertura() ?>">
 
 

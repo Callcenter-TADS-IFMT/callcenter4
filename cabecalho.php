@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include 'conecta.php';
 
 function carregaArquivo($nomeArquivo) {
@@ -32,7 +32,7 @@ $tipo = $_SESSION['tipo'];
                         </a>
                         <h4 style="color: lightyellow">Callcenter 1.0 - Usuário atual: <?= $usuario ?>
                             <div class='btn-group'>
-                                <a href='logoff.php' class='btn btn-danger' ><i class='glyphicon glyphicon-off'></i>Sair</a>
+                                <a href='logoff.php' class='btn btn-danger' ><i class='glyphicon glyphicon-off'></i> Sair</a>
                             </div>
                         </h4>
                     </div>
