@@ -1,7 +1,7 @@
 <?php
 
-//$_SESSION['tipo'] = null;
-//$_SESSION['nome'] = null;
-session_destroy();
+$_SESSION['logado']="false";
+
 header('Location: login.php');
+session_destroy();
 ?>

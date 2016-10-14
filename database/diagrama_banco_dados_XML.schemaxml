@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database>callcenter</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="chamado" view="colnames">
+<left>239</left>
+<top>24</top>
+<width>164</width>
+<height>189</height>
+<sql_create_table>CREATE TABLE `chamado` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_atendente` int(11) DEFAULT NULL,
+  `id_cliente` int(11) DEFAULT NULL,
+  `relato` varchar(255) DEFAULT NULL,
+  `id_elemento` int(11) DEFAULT NULL,
+  `status` varchar(20) DEFAULT 'A',
+  `dt_abertura` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_atendente` (`id_atendente`),
+  KEY `id_cliente` (`id_cliente`),
+  KEY `id_elemento` (`id_elemento`),
+  CONSTRAINT `chamado_ibfk_1` FOREIGN KEY (`id_atendente`) REFERENCES `atendente` (`id`),
+  CONSTRAINT `chamado_ibfk_2` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="atendente" view="colnames">
+<left>12</left>
+<top>26</top>
+<width>151</width>
+<height>187</height>
+<sql_create_table>CREATE TABLE `atendente` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) DEFAULT NULL,
+  `telefone` varchar(255) DEFAULT NULL,
+  `tipo` varchar(255) DEFAULT NULL,
+  `login` varchar(20) DEFAULT NULL,
+  `senha` varchar(20) DEFAULT NULL,
+  `ativo` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="cliente" view="colnames">
+<left>510</left>
+<top>231</top>
+<width>181</width>
+<height>226</height>
+<sql_create_table>CREATE TABLE `cliente` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) DEFAULT NULL,
+  `telefone` varchar(255) DEFAULT NULL,
+  `telefone2` varchar(255) DEFAULT NULL,
+  `pessoa` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `contato` varchar(255) DEFAULT NULL,
+  `endereco` varchar(255) DEFAULT NULL,
+  `cidade` varchar(255) DEFAULT NULL,
+  `estado` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="tramite" view="colnames">
+<left>510</left>
+<top>27</top>
+<width>176</width>
+<height>193</height>
+<sql_create_table>CREATE TABLE `tramite` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `hora_ini` time DEFAULT NULL,
+  `hora_fin` time DEFAULT NULL,
+  `tramite` varchar(255) DEFAULT NULL,
+  `solucao` tinyint(1) DEFAULT NULL,
+  `id_chamado` int(11) DEFAULT NULL,
+  `data` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `id_chamado` (`id_chamado`),
+  CONSTRAINT `tramite_ibfk_1` FOREIGN KEY (`id_chamado`) REFERENCES `chamado` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>

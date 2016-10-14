@@ -49,27 +49,16 @@ $chamadoDAO->setQuery("SELECT
         " ORDER BY dt_abertura DESC");
 
 $chamados = $chamadoDAO->listaChamados($chamadoDAO->getQuery());
-
-//print_r($chamados);
-
-
-if (array_key_exists('removido', $_GET)) {
-    echo "<p class='alert-success'>Removido com sucesso</p>";
-}
 ?> 
-
 <div class="row" style="width: 700px">
+
     <div class="col-md-3 col-xs-12 col-lg-3">
         <?php include_once('sidebar.php'); ?>
     </div>
     <div class="col-md-9 col-xs-12 col-lg-9">
         <div class="container">
             <div class="principal">
-
-
-                <h3>Fila de atendimento</h3>
-
-
+                <h3><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Fila de atendimento</h3>
                 <form method="post" action="fila-atendimento.php">
 
                     <table class="table">
@@ -85,7 +74,6 @@ if (array_key_exists('removido', $_GET)) {
                                 </select>
                             </td>
                         </tr>
-
                         <tr>
                             <td style="width: 200px">Status</td>
                             <td>
@@ -104,8 +92,6 @@ if (array_key_exists('removido', $_GET)) {
                         </tr>
                     </table>
                 </form>
-
-
                 <table class="table table-striped table-bordered"> <?php
                     echo "<th>Nº Chamado</th>";
                     echo "<th>Cliente</th>";
@@ -113,7 +99,6 @@ if (array_key_exists('removido', $_GET)) {
                     echo "<th>Status</th>";
                     echo "<th>Data de abetura</th>";
                     echo "<th>Ação</th>";
-
 
                     foreach ($chamados as $value) {
                         echo "<tr><td>" . $value->getId() . "</td>";
@@ -136,9 +121,6 @@ if (array_key_exists('removido', $_GET)) {
                                     <button class="btn btn-success" style="width: 100px">Assumir
                                         <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
                                     </button>
-
-
-
                                 <?php } else { ?>
                                     <button class="btn btn-primary" style="width: 100px">Visualizar
                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
@@ -146,7 +128,6 @@ if (array_key_exists('removido', $_GET)) {
                                     <?php
                                 }
                                 ?>
-
                             </form>
                         </td>
                         </tr>

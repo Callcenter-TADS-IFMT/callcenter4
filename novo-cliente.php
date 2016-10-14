@@ -1,4 +1,3 @@
-
 <?php
 include_once('cabecalho.php');
 include './ClienteDAO.php';
@@ -18,16 +17,18 @@ $cl = new Cliente();
 @$cl->setCidade($_POST['cidade']);
 @$cl->setEstado($_POST['estado']);
 
-
 if (!empty($_POST['nome'])) {
     $clienteDAO->insereCliente($cl);
+    
+    ?>
+    <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times</a>
+        <strong>Sucesso!</strong>O cliente <?=$cl->getNome()?> foi cadastrado com sucesso!
+    </div>
 
-    echo '<script language="javascript">';
-    echo 'alert("Cliente cadastrado com sucesso!")';
-    echo '</script>';
+    <?php
 }
 ?>
-
 <div class="row" style="width: 700px">
     <div class="col-md-3 col-xs-12 col-lg-3">
         <?php include_once('sidebar.php'); ?>
@@ -36,7 +37,7 @@ if (!empty($_POST['nome'])) {
         <div class="container">
             <div class="principal">
 
-                <h3>Cadastro de clientes</h3>
+                <h3><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Cadastro de clientes</h3>
                 <form method="post" action="novo-cliente.php">
 
                     <table class="table">
@@ -99,12 +100,11 @@ if (!empty($_POST['nome'])) {
                             <td>
                                 <input name = "cidade" class="form-control"  style="width: 600px">
                             </td>
-
                         <tr>
                             <td>Estado</td>
 
                             <td>
-                                <select name="estado" class="form-control" name="elemento" style="width: 150px">
+                                <select name="estado" class="form-control" name="elemento" style="width: 180px">
                                     <option value="AC">Acre</option>
                                     <option value="AL">Alagoas</option>
                                     <option value="AP">Amapá </option>

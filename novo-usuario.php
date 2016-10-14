@@ -1,4 +1,3 @@
-
 <?php
 include_once('cabecalho.php');
 include './UsuarioDAO.php';
@@ -15,16 +14,17 @@ $at = new Usuario();
 @$at->setTipo($_POST['tipo']);
 @$at->setAtivo($_POST['ativo']);
 
-
 if (!empty($_POST['nome'])) {
     $usuararioDAO->insereUsuario($at);
+    ?>
+    <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times</a>
+        <strong>Sucesso!</strong><?=$at->getNom()?> foi cadastrado com sucesso como um usuário do tipo <?= $at->getTipo()?>!
+    </div>
 
-    echo '<script language="javascript">';
-    echo 'alert("Usuário inserido com sucesso!")';
-    echo '</script>';
+    <?php
 }
 ?>
-
 <div class="row" style="width: 700px">
     <div class="col-md-3 col-xs-12 col-lg-3">
         <?php include_once('sidebar.php'); ?>
@@ -32,26 +32,21 @@ if (!empty($_POST['nome'])) {
     <div class="col-md-9 col-xs-12 col-lg-9">
         <div class="container">
             <div class="principal">
-
-                <h3>Cadastro de usuários</h3>
+                <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Cadastro de usuário</h3>
                 <form method="post" action="novo-usuario.php">
-
                     <table class="table">
-
                         <tr>
                             <td style="width: 200px">Nome completo </td>
                             <td>
                                 <input name="nome" class="form-control" style="width: 600px"/>
                             </td>
                         </tr> 
-
                         <tr>
                             <td style="width: 200px">Telefone </td>
                             <td>
                                 <input name="telefone" class="form-control" style="width: 600px"/>
                             </td>
                         </tr>                        
-
                         <tr>
                             <td style="width: 200px">Tipo de usuário</td>
                             <td>
@@ -62,28 +57,24 @@ if (!empty($_POST['nome'])) {
                                 </select>
                             </td>
                         </tr> 
-
                         <tr>
                             <td style="width: 200px">Login </td>
                             <td>
                                 <input name="login" class="form-control" style="width: 600px"/>
                             </td>
                         </tr>  
-
                         <tr>
                             <td style="width: 200px">Senha </td>
                             <td>
                                 <input name = "senha" type="password" class="form-control"  placeholder="Senha" style="width: 600px">
                             </td>
                         </tr>
-
                         <tr>
                             <td style="width: 200px">Confirmar senha </td>
                             <td>
                                 <input name = "senha2" type="password" class="form-control" placeholder="Confirmar senha" style="width: 600px">
                             </td>
                         </tr>
-
                         <tr style="text-align: center">
                             <td/>
                             <td><button class="btn btn-primary" style="width: 300px">Cadastrar Usuário
@@ -92,10 +83,7 @@ if (!empty($_POST['nome'])) {
 
                             </td>
                         </tr>
-
                         <input type="hidden" name ="ativo" value="1">
-
-
                     </table>
                 </form>
             </div>

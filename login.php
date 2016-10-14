@@ -10,27 +10,28 @@ $usuarioDAO = new UsuarioDAO($con);
 $atendentes = $usuarioDAO->listaUsuarios($usuarioDAO->getQuery());
 
 
-foreach ($atendentes as $values){
-    $_SESSION['tipo']=$values->getTipo();
-    $_SESSION['nome']=$values->getNom();        
-    $_SESSION['idus']=$values->getIdUs();  
+foreach ($atendentes as $values) {
+    $_SESSION['tipo'] = $values->getTipo();
+    $_SESSION['nome'] = $values->getNom();
+    $_SESSION['idus'] = $values->getIdUs();
 }
 
 
 if (!empty($_POST['login'])) {
     if (count($atendentes) > 0) {
-    header('Location: index.php');
-    $_SESSION['usuario']=$atendentes;
-    die();
-} else {
-    ?>
-    <div class = "alert alert-danger" role = "alert">
-    <span class = "glyphicon glyphicon-exclamation-sign" aria-hidden = "true"></span>
-    <span class = "sr-only">Erro:</span>
-    Usuário ou senha inválida. Tente novamente!
-    </div>
-    <?php
-}
+        header('Location: index.php');
+        $_SESSION['usuario'] = $atendentes;
+        $_SESSION['logado'] = "true";
+        die();
+    } else {
+        $_SESSION['logado'] = "false";
+        ?>
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times</a>
+            <strong>Acesso negado!</strong> Usuário ou senha inválida! Por favor tente novamente.
+        </div>
+        <?php
+    }
 }
 ?>
 
@@ -39,6 +40,10 @@ if (!empty($_POST['login'])) {
         <meta charset="utf-8"/>
         <link href="css/bootstrap.css" rel="stylesheet"/>
         <link href="css/style.css" rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body style="background-color: #31b0d5">
 
@@ -64,4 +69,4 @@ if (!empty($_POST['login'])) {
 
             </div>
         </form>
-<?php include './rodape.php' ?>
+        <?php include './rodape.php' ?>

@@ -1,10 +1,7 @@
 <?php
 include 'cabecalho.php';
 include 'chamadoDAO.php';
-
 $chamadoDAO = new chamadoDAO($con); // aqui ele ja cria a conexao
-//$produtos = $produtoDAO->listaProdutos();
-
 $ch = new Chamado();
 $cl = new Cliente();
 $at = new Atendente();
@@ -21,36 +18,23 @@ $ch->setAtendente($at);
 $ch->setCliente($cl);
 $ch->setElemento($el);
 ?>
-
-
-
 <div class="container">
     <div class="principal">
         <p class="alert-success">
             <?php if ($chamadoDAO->insereChamado($ch)) { ?>
-            <div class="text-success">
-                <div class="previous">
-                    <p class="alert-success"> 
-                        Chamado cadastrado com sucesso! <br/>
-                    </p>
-                </div>
+            <div class="alert alert-success">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times</a>
+                <strong></strong>Chamado Cadastrado com sucesso!
             </div>
-
-
         <?php } else { ?>
-            <div class="text-danger">
-                <div class="previous">
-                    <p class="alert-danger"> 
-                        Erro ao cadastrar o chamado! <br/>
-                    </p>
-                </div>
+            <div class="alert alert-danger">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times</a>
+                <strong>Ops, ocorreu um erro!</strong>Ocorreu um erro ao inserir o chamado no banco de dados. Entre em contato com o administrador do sistema.
             </div>
-
-
         <?php } ?>
         </p>
         <div class="jumbotron">
-            <p><a class="btn btn-primary btn-lg" href="novo-chamado.php" role="button">Novo chamado</a></p>
+            <p><a class="btn btn-primary btn-lg" href="novo-chamado.php" role="button">Voltar</a></p>
         </div>
     </div>
 </div>

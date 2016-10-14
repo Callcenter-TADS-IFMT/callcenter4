@@ -1,4 +1,3 @@
-
 <?php
 include_once('cabecalho.php');
 include 'cliente-banco.php';
@@ -7,9 +6,7 @@ include 'atendente-banco.php';
 $clientes = listaCliente($con);
 $elementos = listaElemento($con);
 $atendentes = listaAtendente($con);
-
 ?>
-
 <div class="row" style="width: 700px">
     <div class="col-md-3 col-xs-12 col-lg-3">
         <?php include_once('sidebar.php'); ?>
@@ -17,9 +14,7 @@ $atendentes = listaAtendente($con);
     <div class="col-md-9 col-xs-12 col-lg-9">
         <div class="container">
             <div class="principal">
-
-
-                <h3>Cadastro de atendimento</h3>
+                <h3><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> Cadastro de atendimento</h3>
                 <form method="post" action="chamado-cadastrado.php">
 
                     <table class="table">
@@ -27,7 +22,7 @@ $atendentes = listaAtendente($con);
                             <td style="width: 200px">Atendente </td>
                             <td>
                                 <input name="atendente" class="form-control" value="<?= $usuario ?>" style="width: 600px"/>
-                                <input type="hidden" name ="id_atend" value="<?=$id_atendente?>">
+                                <input type="hidden" name ="id_atend" value="<?= $id_atendente ?>">
                             </td>
                         </tr>  
 
